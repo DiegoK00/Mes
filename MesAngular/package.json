@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.0",
+    "@angular/cdk": "^17.3.10",
     "@angular/common": "^17.3.0",
     "@angular/compiler": "^17.3.0",
     "@angular/core": "^17.3.0",
@@ -21,9 +22,15 @@
     "@angular/platform-server": "^17.3.0",
     "@angular/router": "^17.3.0",
     "@angular/ssr": "^17.3.11",
+    "bootstrap": "^5.3.3",
+    "bootswatch": "^5.3.3",
     "express": "^4.18.2",
+    "font-awesome": "^4.7.0",
+    "navbar": "^3.0.0",
+    "ng-gallery": "^12.0.0",
+    "ngx-bootstrap": "^12.0.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
+    "tslib": "^2.8.1",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
