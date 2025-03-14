@@ -9,6 +9,14 @@
                     <a routerLink="/Clienti" routerLinkActive="active" class="nav-link">Clienti</a>
                 </li>
             </ul>
+            
+            <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex" autocomplete="off">
+                <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="search"
+                    placeholder="username">
+                <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="search"
+                    placeholder="password" type="password">
+                <button class="btn btn-success" type="submit">Login</button>
+            </form>
         </div>
     </nav>
     

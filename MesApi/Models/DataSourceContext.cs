@@ -6,6 +6,7 @@ namespace MesApi.Models
     {
         public DbSet<Commesse> Commesse { get; set; }
         public DbSet<Clienti> Clienti { get; set; }
+        public DbSet<Utenti> Utenti { get; set; }
 
     }
 }
