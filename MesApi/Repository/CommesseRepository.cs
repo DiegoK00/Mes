@@ -31,7 +31,7 @@ namespace MesApi.Repository
             context.Entry(comm).State = EntityState.Modified;
         }
 
-        public async Task<bool> InsertCommessaAsync(Commesse comm)
+        public async Task<bool> InsertAsync(Commesse comm)
         {
             context.Commesse.Add(new Commesse()
             {
@@ -43,15 +43,9 @@ namespace MesApi.Repository
             return await context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> UpdateCommessaAsync(Commesse comm)
+        public async Task<bool> UpdateAsync(Commesse comm)
         {
             context.Commesse.Update(comm);
-            return await context.SaveChangesAsync() > 0;
-        }
-
-        public async Task<bool> DeleteCommessa(Commesse comm)
-        {
-            context.Commesse.Remove(comm);
             return await context.SaveChangesAsync() > 0;
         }
 

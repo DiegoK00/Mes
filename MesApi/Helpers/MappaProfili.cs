@@ -13,6 +13,7 @@ namespace MesApi.Helpers
         public MappaProfili()   
         {
             CreateMap<Commesse, CommesseDto>().ReverseMap();
+            CreateMap<Utenti, UserDto>().ReverseMap();
             
         }
 

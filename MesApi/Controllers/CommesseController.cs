@@ -31,20 +31,35 @@ namespace MesApi.Controllers
 
         }
 
-        [HttpGet("Id:int")]
-        //  [HttpGet("{id:int}")] // commesse/id 
-        public async Task<ActionResult<CommesseDto>> GetCommessa(int id)
-        {
+        // [HttpGet("Id:int")]
+        // //  [HttpGet("{id:int}")] // commesse/id 
+        // public async Task<ActionResult<CommesseDto>> GetCommessa(int id)
+        // {
+        //     var comm = await commesseRepository.GetCommessaAsync(id);
+        //     if (comm == null) return NotFound();
+        //     return mapper.Map<CommesseDto>(comm);
+        // }
 
-            var comm = await commesseRepository.GetCommessaAsync(id);
+        [HttpGet("{Id}/{Commessa}")] // commesse/nome/Id
+        public async Task<ActionResult<CommesseDto>> GetCommessa(int Id,string Commessa)
+        {
+            Commesse? comm;
+            if (Id == 0)
+            {
+                comm = await commesseRepository.GetCommessaNomeAsync(Commessa);
+            }
+            else
+            {
+                comm = await commesseRepository.GetCommessaAsync(Id);
+            }
 
             if (comm == null) return NotFound();
-            return mapper.Map<CommesseDto>(comm);
 
+            return mapper.Map<CommesseDto>(comm);
         }
 
         [HttpGet("{Commessa}")] // commesse/DescCommessa ( controllo il like ) 
-        public async Task<ActionResult<CommesseDto>> GetUser(string Commessa)
+        public async Task<ActionResult<CommesseDto>> GetCommessa(string Commessa)
         {
             var comm = await commesseRepository.GetCommessaNomeAsync(Commessa);
 
@@ -68,7 +83,7 @@ namespace MesApi.Controllers
             if (comm == null) return NotFound();
             var cc = mapper.Map<Commesse>(comm);
 
-            if (await commesseRepository.InsertCommessaAsync(cc)) return NoContent();
+            if (await commesseRepository.InsertAsync(cc)) return NoContent();
 
             // return BadRequest("aggiunta commmessa fallita.");
             return Ok();
@@ -89,7 +104,7 @@ namespace MesApi.Controllers
             // commesseRepository.Update(user);
             mapper.Map(comm, commessa);
 
-            if (await commesseRepository.UpdateCommessaAsync(commessa)) return NoContent();
+            if (await commesseRepository.UpdateAsync(commessa)) return NoContent();
 
             // return BadRequest("aggiornamento commmessa fallita.");
             return Ok();

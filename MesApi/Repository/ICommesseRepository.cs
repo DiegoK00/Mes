@@ -10,10 +10,8 @@ namespace MesApi.Repository
         Task<Commesse?> GetCommessaNomeAsync(string Commessa);
         Task<bool> SaveAllAsync();
         Task<bool> Delete(Commesse comm);
-        Task<bool> InsertCommessaAsync(Commesse comm);
-        Task<bool> UpdateCommessaAsync(Commesse comm);
-        Task<bool> DeleteCommessa(Commesse comm);
-          
+        Task<bool> InsertAsync(Commesse comm);
+        Task<bool> UpdateAsync(Commesse comm);          
          
     }
 }
