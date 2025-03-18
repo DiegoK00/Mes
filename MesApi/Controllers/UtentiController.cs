@@ -36,7 +36,7 @@ namespace MesApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> InsertUtente([FromBody] UserDto utente)
+        public async Task<ActionResult> Insert([FromBody] UserDto utente)
         {
 
             // var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -50,7 +50,7 @@ namespace MesApi.Controllers
             if (utente == null) return NotFound();
             var cc = mapper.Map<Utenti>(utente);
 
-            if (await utentiRepository.InsertAsync(cc)) return NoContent();
+            if (! await utentiRepository.InsertAsync(cc)) return NoContent();
 
             // return BadRequest("aggiunta commmessa fallita.");
             return Ok();
@@ -58,20 +58,21 @@ namespace MesApi.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateCommessa([FromBody] UserDto utente)
+        public async Task<ActionResult> Update([FromBody] UserDto utente)
         {
 
             // var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             // if (username == null) return BadRequest("Utente non validato!");
 
-            var user = await utentiRepository.GetUtenteAsync(utente.Username);
-            if (user == null) return NotFound("Non si riesce a trovare la commessa!");
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var tmp = await utentiRepository.GetUtenteAsync(utente.Username);
+            if (tmp == null) return NotFound("Non si riesce a trovare l'utente!");
 
             // x forzare l'aggiornamento
             // commesseRepository.Update(user); 
-            mapper.Map(utente, user);
 
-            if (await utentiRepository.UpdateAsync(user)) return NoContent();
+            var cc = mapper.Map<Utenti>(utente);
+            if (! await utentiRepository.UpdateAsync(cc)) return NoContent();
 
             // return BadRequest("aggiornamento commmessa fallita.");
             return Ok();
@@ -84,7 +85,7 @@ namespace MesApi.Controllers
 
             var tmpToDelete = await utentiRepository.GetUtenteAsync(Username);
 
-            if (tmpToDelete == null) return NotFound($"Non si riesce a trovare la commessa id : {Username}!");
+            if (tmpToDelete == null) return NotFound($"Non si riesce a trovare l'utente nome : {Username}!");
 
             if (await utentiRepository.DeleteUtente(tmpToDelete)) return Ok();
             return BadRequest();

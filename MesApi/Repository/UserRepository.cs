@@ -1,3 +1,4 @@
+using MesApi.Dto;
 using MesApi.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,8 @@ namespace MesApi.Repository
         }
         public async Task<Utenti?> GetUtenteAsync(string user)
         {
-            return await context.Utenti.SingleOrDefaultAsync(x => x.Username.ToLower().Contains(user.ToLower()));
+            return await context.Utenti.AsNoTracking().SingleOrDefaultAsync(
+                x => x.Username.ToLower().Equals(user.ToLower()));
         }
 
         public async Task<bool> SaveAllAsync()
@@ -35,19 +37,23 @@ namespace MesApi.Repository
 
         public async Task<bool> InsertAsync(Utenti user)
         {
-            context.Utenti.Add(new Utenti()
-            {
-                Username = user.Username,
-                Password = user.Password,
-            });
+            context.Utenti.Add(user);
             return await context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> UpdateAsync(Utenti user)
-        {
+        // public async Task<bool> UpdateAsync(Utenti user)
+        // {
+        //     context.Utenti.Update();
+
+        //     return await context.SaveChangesAsync() > 0;            
+        // }
+
+       public async Task<bool> UpdateAsync(Utenti user){
             context.Utenti.Update(user);
+
             return await context.SaveChangesAsync() > 0;            
         }
+
 
         public async Task<bool> DeleteUtente(Utenti user)
         {

@@ -7,12 +7,11 @@ namespace MesApi.Repository
 
         Task<IEnumerable<Utenti>> GetUtentiAsync();
         // Task<Utenti?> GetUtenteAsync(int CommessaId);
-        Task<Utenti?> GetUtenteAsync(string Commessa);
+        Task<Utenti?> GetUtenteAsync(string user);
         Task<bool> SaveAllAsync();
         Task<bool> InsertAsync(Utenti user);
-        Task<bool> UpdateAsync(Utenti user);
+        Task<bool> UpdateAsync(Utenti uUser);
         Task<bool> DeleteUtente(Utenti user);
-
-
     }
+
 }

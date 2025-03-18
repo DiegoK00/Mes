@@ -14,9 +14,8 @@ namespace MesApi.Helpers
         {
             CreateMap<Commesse, CommesseDto>().ReverseMap();
             CreateMap<Utenti, UserDto>().ReverseMap();
-            
-        }
 
-        
+        }
+                
     }
 }
