@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MesApi.Model.Migrations
+namespace MesApi.Models.Migrations
 {
     [DbContext(typeof(DataSourceContext))]
     [Migration("20250313094029_InitalCreate")]

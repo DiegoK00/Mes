@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MesApi.Model.Migrations
+namespace MesApi.Models.Migrations
 {
     /// <inheritdoc />
     public partial class InitalCreate : Migration

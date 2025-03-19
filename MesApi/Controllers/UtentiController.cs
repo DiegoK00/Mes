@@ -26,7 +26,7 @@ namespace MesApi.Controllers
         }
 
         [HttpGet("{Utente}")] // commesse/DescCommessa ( controllo il like ) 
-        public async Task<ActionResult<UserDto>> GetUtenti(string Utente)
+        public async Task<ActionResult<UserDto>> GetUtente(string Utente)
         {
             var user = await utentiRepository.GetUtenteAsync(Utente);
 

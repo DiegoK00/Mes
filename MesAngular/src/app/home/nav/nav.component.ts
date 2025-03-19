@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../../_services/account.service';
+import { User } from '../../_models/User';
 
 @Component({
   selector: 'app-nav',
@@ -17,16 +18,26 @@ export class NavComponent {
   private router = inject(Router);
   private toaster = inject(ToastrService);
 
-  model: any;
+  model: any | undefined;
+  username: string | undefined;
+  password: string | undefined;
 
   login() {
+    
+
+    console.info("111111");
+    this.model.username = this.username;
+    this.model.password = this.password;
+    console.info(this.model);
+    console.info("22222222");
+
     this.accountService.login(this.model).subscribe({
       //next: (response) => {
       next: () => {
         // console.log('ok ' + response);
-       this.router.navigateByUrl('/Commesse')
+        this.router.navigateByUrl('/Commesse');
       },
-      error: error =>this.toaster.error(error.error),
+      error: (error) => this.toaster.error(error.error),
     });
   }
 }

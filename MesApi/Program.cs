@@ -1,6 +1,8 @@
 using MesApi.Models;
 using MesApi.Repository;
+using MesApi.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,7 @@ builder.Services.AddDbContext<DataSourceContext>(opt =>
 builder.Services.AddCors();
 builder.Services.AddScoped<ICommesseRepository, CommesseRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();

@@ -10,9 +10,8 @@ namespace MesApi.Dto
     public class UserDto
     {
         public required string Username {  get; set; }
-        public required string Password { get; set; }
+        public string Password { get; set; }= "";
         public required string Token { get; set; }
-
         public string Nome { get; set; } = "";
         public string Cognome { get; set; } = "";
     }
