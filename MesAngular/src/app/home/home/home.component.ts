@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-home',
@@ -8,5 +9,19 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+  
+  registerMode = false;
+  users: any;
+
+  // nuovo modo?
+  registerToggle() {
+    this.registerMode = !this.registerMode;
+  }
+
+  // vecchio modo?
+  cancelRegisterMode(event: boolean) {
+    this.registerMode = event;
+  }
 
 }

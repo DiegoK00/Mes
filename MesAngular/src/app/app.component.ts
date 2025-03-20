@@ -6,6 +6,7 @@ import { NavComponent } from "./home/nav/nav.component";
 import { CommonModule, NgFor } from '@angular/common'; 
 import { routes } from './app.routes';
 import { NgxSpinnerComponent } from 'ngx-spinner';
+import { AccountService } from './_services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,18 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
 })
 export class AppComponent implements OnInit {
   title = 'MesAngular';
+  private accountService= inject(AccountService);
+
 
   ngOnInit(): void {
-    
+    // this.setCurrentUser();
+  }
+  
+  setCurrentUser(){
+    const userString = localStorage.getItem('user');
+    if (!userString) return;
+    const user = JSON.parse(userString);
+    this.accountService.currentUser.set(user);
   }
 
 }
