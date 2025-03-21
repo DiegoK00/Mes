@@ -8,27 +8,35 @@ import { User } from '../_models/User';
 })
 export class UsersService {
   private http = inject(HttpClient);
-  baseUrl = environment.apiUrl;
-  userS = signal<User[]>([]);
+  private baseUrl = environment.apiUrl;
+  public userS = signal<User[]>([]);
 
-  getMembers(pageNumber?: number, pageSize?: number) {
+  // getMembers(pageNumber?: number, pageSize?: number) {
+  getMembers() {
     let params = new HttpParams();
 
-    if (pageNumber && pageSize) {
-      params = params.append('pageNumber', pageNumber);
-      params = params.append('pageSize', pageSize);
-    }
+    // if (pageNumber && pageSize) {
+    //   params = params.append('pageNumber', pageNumber);
+    //   params = params.append('pageSize', pageSize);
+    // }
 
-    return this.http.get<User[]>(this.baseUrl + 'Utenti').subscribe({
-      next: (member) => this.userS.set(member),
+    console.log(this.baseUrl + 'Utenti');
+    var aaa =  this.http.get<User[]>(this.baseUrl + 'Utenti').subscribe({
+      next: (member) => {
+        // const sortedMembers = member.sort((a, b) => a.Cognome < b.Cognome ? -1 : (a.Cognome > b.Cognome ? 1 : 0));
+        // this.userS.set(sortedMembers);
+        this.userS.set(member);
+        console.log(member);
+      },
     });
+
+    return aaa;
   }
 
   getMember(username: string) {
     return this.http.get<User>(this.baseUrl + 'Utenti/' + username);
   }
 
- 
   updateUser(user: User) {
     return this.http.put(this.baseUrl + 'Utenti', user).pipe();
   }

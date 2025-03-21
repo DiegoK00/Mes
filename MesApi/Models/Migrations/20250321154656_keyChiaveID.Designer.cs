@@ -2,6 +2,7 @@
 using MesApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MesApi.Models.Migrations
 {
     [DbContext(typeof(DataSourceContext))]
-    partial class DataSourceContextModelSnapshot : ModelSnapshot
+    [Migration("20250321154656_keyChiaveID")]
+    partial class keyChiaveID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.14");
@@ -125,9 +128,6 @@ namespace MesApi.Models.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id", "Username");
-
-                    b.HasIndex("Username")
-                        .IsUnique();
 
                     b.ToTable("Utenti");
                 });

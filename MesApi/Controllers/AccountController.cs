@@ -40,6 +40,7 @@ namespace MesApi.Controllers
             await context.SaveChangesAsync();
             return new UserDto
             {
+                Id = user.Id,
                 Username = user.Username,
                 Token = tokenServices.CreateToken(user) 
 
@@ -71,6 +72,7 @@ namespace MesApi.Controllers
 
             return new UserDto
             {
+                Id = user.Id,
                 Username = user.Username,
                 Token = tokenServices.CreateToken(user),
                 Nome = user.Nome,

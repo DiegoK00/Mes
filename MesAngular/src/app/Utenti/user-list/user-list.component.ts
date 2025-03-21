@@ -11,9 +11,9 @@ import { User } from '../../_models/User';
 })
 export class UserListComponent implements OnInit {
   public userService = inject(UsersService);
-  userS: User[] = [];
-  pageNumber = 2;
-  pageSize = 5;
+ userS: User[] = [];
+  // pageNumber = 2;
+  // pageSize = 5;
 
   ngOnInit(): void {
     // OLD
@@ -24,7 +24,7 @@ export class UserListComponent implements OnInit {
   loadMembers() {
     // this.memberService.getMembers(this.pageNumber,this.pageSize);
 
-     this.userService.getMembers();
+    this.userService.getMembers();
   }
 
 }

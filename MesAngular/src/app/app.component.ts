@@ -7,11 +7,12 @@ import { CommonModule, NgFor } from '@angular/common';
 import { routes } from './app.routes';
 import { NgxSpinnerComponent } from 'ngx-spinner';
 import { AccountService } from './_services/account.service';
+import { UserListComponent } from "./Utenti/user-list/user-list.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, NavComponent, RouterOutlet, NgxSpinnerComponent],
+  imports: [CommonModule, NavComponent, RouterOutlet, NgxSpinnerComponent, UserListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

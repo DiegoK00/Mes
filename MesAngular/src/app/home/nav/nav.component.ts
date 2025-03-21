@@ -23,6 +23,7 @@ export class NavComponent {
   private toaster = inject(ToastrService);
 
   model: User = {
+    Id: 0,
     Username: '',
     Password: '',
     Token: 'tt',

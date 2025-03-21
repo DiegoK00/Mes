@@ -10,7 +10,6 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  
   registerMode = false;
   users: any;
 
