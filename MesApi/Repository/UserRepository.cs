@@ -9,7 +9,7 @@ namespace MesApi.Repository
     public class UserRepository(DataSourceContext context) : IUserRepository  // IMapper mapper) : IUserRepository
     {
 
-        public async Task<IEnumerable<Utenti>> GetUtentiAsync()
+        public async Task<List<Utenti>> GetUtentiAsync()
         {
             return await context.Utenti.ToListAsync();
         }

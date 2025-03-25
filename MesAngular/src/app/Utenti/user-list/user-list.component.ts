@@ -7,24 +7,27 @@ import { User } from '../../_models/User';
   standalone: true,
   imports: [],
   templateUrl: './user-list.component.html',
-  styleUrl: './user-list.component.css'
+  styleUrl: './user-list.component.css',
 })
 export class UserListComponent implements OnInit {
   public userService = inject(UsersService);
- userS: User[] = [];
+  private userS: User[] = [];
   // pageNumber = 2;
   // pageSize = 5;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     // OLD
-    if (this.userService.userS().length === 0) this.loadMembers();
+    if (this.userService.userS()?.length === 0) await this.loadMembers();
+    console.log('result: ' + this.userService.userS()?.length);
+    // console.log(this.userService.userS()[0].Cognome);
+   
+    //  new
     //if (!this.memberService.paginatedResult()) this.loadMembers();
   }
 
   loadMembers() {
     // this.memberService.getMembers(this.pageNumber,this.pageSize);
-
+    console.log('loadMembers');
     this.userService.getMembers();
   }
-
 }

@@ -5,7 +5,10 @@ namespace MesApi.Repository
     public interface IUserRepository
     {
 
-        Task<IEnumerable<Utenti>> GetUtentiAsync();
+// ORI Task<IEnumerable<Utenti>> GetUtentiAsync();
+Task<List<Utenti>> GetUtentiAsync();
+        
+
         // Task<Utenti?> GetUtenteAsync(int CommessaId);
         Task<Utenti?> GetUtenteAsync(string user);
         Task<bool> SaveAllAsync();

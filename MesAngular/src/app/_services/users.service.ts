@@ -9,7 +9,7 @@ import { User } from '../_models/User';
 export class UsersService {
   private http = inject(HttpClient);
   private baseUrl = environment.apiUrl;
-  public userS = signal<User[]>([]);
+  userS = signal<User[] | null>(null);
 
   // getMembers(pageNumber?: number, pageSize?: number) {
   getMembers() {
@@ -20,17 +20,17 @@ export class UsersService {
     //   params = params.append('pageSize', pageSize);
     // }
 
-    console.log(this.baseUrl + 'Utenti');
-    var aaa =  this.http.get<User[]>(this.baseUrl + 'Utenti').subscribe({
+    // console.log(this.baseUrl + 'Utenti');
+
+    return   this.http.get<User[]>(this.baseUrl + 'Utenti').subscribe({
       next: (member) => {
         // const sortedMembers = member.sort((a, b) => a.Cognome < b.Cognome ? -1 : (a.Cognome > b.Cognome ? 1 : 0));
         // this.userS.set(sortedMembers);
         this.userS.set(member);
-        console.log(member);
+        console.log('member :  ' + member.length);
+        console.log(member[2]);
       },
     });
-
-    return aaa;
   }
 
   getMember(username: string) {

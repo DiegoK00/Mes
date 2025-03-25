@@ -17,11 +17,11 @@ namespace MesApi.Controllers
     public class UtentiController(IUserRepository utentiRepository, IMapper mapper) : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDto>>> GetUtenti()
+        public async Task<ActionResult<List<UserDto>>> GetUtenti()
         {
             var utente = await utentiRepository.GetUtentiAsync();
 
-            return Ok(mapper.Map<IEnumerable<UserDto>>(utente));
+            return Ok(mapper.Map<List<UserDto>>(utente));
 
         }
 
