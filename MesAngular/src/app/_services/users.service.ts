@@ -1,15 +1,17 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, OnInit, signal } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { User } from '../_models/User';
+import { Utenti } from '../_models/User';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
+ 
   private http = inject(HttpClient);
   private baseUrl = environment.apiUrl;
-  userS = signal<User[] | null>(null);
+//  public userS = signal<Utenti[] | null>(null);
+ public userS = signal<Utenti[]>([]);
 
   // getMembers(pageNumber?: number, pageSize?: number) {
   getMembers() {
@@ -22,26 +24,25 @@ export class UsersService {
 
     // console.log(this.baseUrl + 'Utenti');
 
-    return   this.http.get<User[]>(this.baseUrl + 'Utenti').subscribe({
+     return this.http.get<Utenti[]>(this.baseUrl + 'Utenti').subscribe({
       next: (member) => {
         // const sortedMembers = member.sort((a, b) => a.Cognome < b.Cognome ? -1 : (a.Cognome > b.Cognome ? 1 : 0));
         // this.userS.set(sortedMembers);
         this.userS.set(member);
-        console.log('member :  ' + member.length);
-        console.log(member[2]);
+        console.log('member :  ' + this.userS());
       },
     });
   }
 
   getMember(username: string) {
-    return this.http.get<User>(this.baseUrl + 'Utenti/' + username);
+    return this.http.get<Utenti>(this.baseUrl + 'Utenti/' + username);
   }
 
-  updateUser(user: User) {
+  updateUser(user: Utenti) {
     return this.http.put(this.baseUrl + 'Utenti', user).pipe();
   }
 
-  insertUser(user: User) {
+  insertUser(user: Utenti) {
     return this.http.post(this.baseUrl + 'Utenti', user).pipe();
   }
 }

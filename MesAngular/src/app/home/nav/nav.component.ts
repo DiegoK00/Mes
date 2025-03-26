@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../../_services/account.service';
-import { User } from '../../_models/User';
+import { Utenti } from '../../_models/User';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
@@ -22,7 +22,7 @@ export class NavComponent {
   private router = inject(Router);
   private toaster = inject(ToastrService);
 
-  model: User = {
+  model: Utenti = {
     Id: 0,
     Username: '',
     Password: '',

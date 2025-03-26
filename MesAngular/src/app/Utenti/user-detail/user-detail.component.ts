@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { UnsubscriptionError } from 'rxjs';
-import { User } from '../../_models/User';
+import { Utenti } from '../../_models/User';
 import { UsersService } from '../../_services/users.service';
 
 @Component({

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { User } from '../_models/User';
+import { Utenti } from '../_models/User';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs';
 import { error } from 'console';
@@ -11,12 +11,12 @@ import { error } from 'console';
 export class AccountService {
   private http = inject(HttpClient);
   baseUrl = environment.apiUrl;
-  currentUser = signal<User | null>(null);
+  currentUser = signal<Utenti | null>(null);
 
   login(model: any) {
     // console.log(this.baseUrl + 'account/login');
     // console.log(model);
-    return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
+    return this.http.post<Utenti>(this.baseUrl + 'account/login', model).pipe(
       map((user) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
@@ -27,7 +27,7 @@ export class AccountService {
   }
 
   register(model: any) {
-    return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
+    return this.http.post<Utenti>(this.baseUrl + 'account/register', model).pipe(
       map((user) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));

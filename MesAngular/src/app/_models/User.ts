@@ -1,4 +1,4 @@
-export interface User{
+export interface Utenti{
     Id: number;
     Username: string;
     Token: string;
