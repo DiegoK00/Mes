@@ -1,0 +1,26 @@
+<p>user-detail works!</p>
+<div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-9">
+        <form id="editForm" #editForm="ngForm" (ngSubmit)="updateMember()">
+            <h4 class="mt-2">Description</h4>
+            <textarea class="form-control" name="introduction" [(ngModel)]="utente?.nome"
+                rows="6"></textarea>
+            <h4 class="mt-2">Looking For</h4>
+            <textarea class="form-control" name="lookingFor" [(ngModel)]="utente?.lookingFor"
+                rows="6"></textarea>
+            <h4 class="mt-2">interests</h4>
+            <textarea class="form-control" name="interests" [(ngModel)]="utente.interests" 
+                rows="6"></textarea>
+                <h4 class="mt-2">Location details</h4>
+            <div class="d-flex align-item-center">
+                <label>Citta:</label>
+                <input type="text" [(ngModel)]="utente.city" class="form-control mx-2" name="city">
+                <label>Stato:</label>
+                <input type="text" [(ngModel)]="utente.country" class="form-control mx-2" name="country">
+            </div>
+        </form>
+    </div>
+</div>
