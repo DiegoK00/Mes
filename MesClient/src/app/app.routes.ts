@@ -18,9 +18,11 @@ export const routes: Routes = [
     children: [
       { path: 'Clienti', component: CustomerListComponent },
       { path: 'Commesse', component: CommListComponent },
-      { path: 'user/detail', component: UserDetailComponent },
+      { path: 'Utente/:id', component: UserDetailComponent },
       { path: 'Utenti', component: UserListComponent },
       
+
+
         // {path: 'member/edit', component: MemberEditComponent, canDeactivate: [preventUnsavedChangesGuard]},
         // {path: 'admin', component:AdminPanelComponent, canActivate: [adminGuard]}
     ]

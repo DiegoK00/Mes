@@ -27,7 +27,16 @@ export class UserDetailComponent implements OnInit {
       $event.returnValue = true;
     }
   }
-  utente?: Utenti;
+  utente: Utenti = {
+    id: 0,
+    username: '',
+    password: '',
+    token: '',
+    nome: '',
+    cognome: '',
+    description: '',
+    photo: '',
+  };
   private accountService = inject(AccountService);
   private usersService = inject(UsersService);
   private toastr = inject(ToastrService);
@@ -38,6 +47,7 @@ export class UserDetailComponent implements OnInit {
 
   loadMembers() {
     const user = this.accountService.currentUser();
+    console.log(user);
     if (!user) return;
     this.usersService.getMember(user.username).subscribe({
       next: (member) => (this.utente = member),

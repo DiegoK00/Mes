@@ -1,1 +1,37 @@
-<p>user-list works!</p>
+<div class="row">
+<table class="table table-striped table-bordered table-hover table-sm">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            <th scope="col">Description</th>
+            <!-- <th scope="col">Telefono</th> -->
+        </tr>
+    </thead>    
+    <tbody>
+        @for (user of userService.userS(); track user.id) {
+            <tr>
+                 <td>
+                 
+<button routerLink="/Utente/{{user.id}}" routerLinkActive="router-link-active"  class="btn btn-primary {{user.id}}">
+<i class="fa fa-user"> </i> </button>
+
+<!-- // 'Utente/:id' "/members/{{member().userName}}" -->
+                  {{user.id}}</td>
+                <td>{{user.nome}}</td>
+                <td>{{user.cognome}}</td>
+                <td>{{user.description}}</td>
+                <!-- <td>{{user.telefono}}</td> -->
+            </tr>
+        }
+    </tbody>
+</table>
+
+    <!-- @for (user of userService.userS(); track user.id) {
+    <div class="col-2">
+        <app-user-card [utente]="user"></app-user-card>
+    </div>
+    } -->
+
+</div>

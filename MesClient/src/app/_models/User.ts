@@ -5,4 +5,6 @@ export interface Utenti{
     token: string;
     nome: string;
     cognome: string;
+    description: string;
+    photo: string;
 }

@@ -29,7 +29,9 @@ export class NavComponent {
     password: '',
     token: 'tt',
     nome: 'nn',
-    cognome: 'cc'
+    cognome: 'cc',
+    description: 'dd',
+    photo: ''
   };
 
   login() {
