@@ -1,13 +1,13 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable, OnInit, signal } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { Utenti } from '../_models/User';
+import { HttpClient, HttpParams } from '@angular/common/http'; 
+import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class UsersService {
-  private http = inject(HttpClient);
+export class UtentiTabellaService {
+private http = inject(HttpClient);
   private baseUrl = environment.apiUrl;
   //  public userS = signal<Utenti[] | null>(null);
   public userS = signal<Utenti[]>([]);
@@ -17,6 +17,13 @@ export class UsersService {
   // getMembers(pageNumber?: number, pageSize?: number) {
   getMembers() {
     let params = new HttpParams();
+
+    // if (pageNumber && pageSize) {
+    //   params = params.append('pageNumber', pageNumber);
+    //   params = params.append('pageSize', pageSize);
+    // }
+
+    // console.log(this.baseUrl + 'Utenti');
 
     return this.http.get<Utenti[]>(this.baseUrl + 'Utenti').subscribe({
       next: (member) => {
@@ -36,6 +43,10 @@ export class UsersService {
       },
     });
     return <Utenti[]>([]);
+  }
+
+  getMemberDesc(username: string) {
+    return this.http.get<Utenti>(this.baseUrl + 'Utenti/' + username);
   }
 
   getMember(id: number) {

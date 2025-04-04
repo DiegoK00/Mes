@@ -35,6 +35,16 @@ namespace MesApi.Controllers
             return mapper.Map<UserDto>(user);
         }
 
+        [HttpGet("{Id:int}")] // commesse/DescCommessa ( controllo il like ) 
+        public async Task<ActionResult<UserDto>> GetUtente(int Id)
+        {
+            var user = await utentiRepository.GetUtenteAsync(Id);
+
+            if (user == null) return NotFound();
+
+            return mapper.Map<UserDto>(user);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Insert([FromBody] UserDto utente)
         {

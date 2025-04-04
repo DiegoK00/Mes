@@ -18,6 +18,11 @@ namespace MesApi.Repository
             return await context.Utenti.AsNoTracking().SingleOrDefaultAsync(
                 x => x.Username.ToLower().Equals(user.ToLower()));
         }
+        public async Task<Utenti?> GetUtenteAsync(int Id)
+        {
+            return await context.Utenti.AsNoTracking().SingleOrDefaultAsync(
+                x => x.Id == Id);
+        }
 
         public async Task<bool> SaveAllAsync()
         {
@@ -28,7 +33,7 @@ namespace MesApi.Repository
         {
             context.Entry(user).State = EntityState.Modified;
         }
-        
+
         public async Task<bool> Delete(Utenti user)
         {
             context.Utenti.Remove(user);
@@ -48,10 +53,11 @@ namespace MesApi.Repository
         //     return await context.SaveChangesAsync() > 0;            
         // }
 
-       public async Task<bool> UpdateAsync(Utenti user){
+        public async Task<bool> UpdateAsync(Utenti user)
+        {
             context.Utenti.Update(user);
 
-            return await context.SaveChangesAsync() > 0;            
+            return await context.SaveChangesAsync() > 0;
         }
 
 

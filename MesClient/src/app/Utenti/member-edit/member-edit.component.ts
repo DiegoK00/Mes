@@ -2,58 +2,56 @@ import {
   Component,
   HostListener,
   inject,
-  input,
   OnInit,
   ViewChild,
   viewChild,
 } from '@angular/core';
+import { Utenti } from '../../_models/User';
 import { AccountService } from '../../_services/account.service';
+import { UsersService } from '../../_services/users.service';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Utenti } from '../../_models/User';
-import { UsersService } from '../../_services/users.service';
-import { UtentiTabellaService } from '../../_services/utenti-tabella.service';
 
 @Component({
-  selector: 'app-user-detail',
+  selector: 'app-member-edit',
   standalone: true,
   imports: [TabsModule, FormsModule],
-  templateUrl: './user-detail.component.html',
-  styleUrl: './user-detail.component.css',
+  templateUrl: './member-edit.component.html',
+  styleUrl: './member-edit.component.css',
 })
-export class UserDetailComponent implements OnInit {
+export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') localEditForm?: NgForm;
   @HostListener('window:beforeunload', ['$event']) notify($event: any) {
     if (this.localEditForm?.dirty) {
       $event.returnValue = true;
     }
   }
- 
+  member?: Utenti;
   private accountService = inject(AccountService);
-  private usersService = inject(UtentiTabellaService);
+  private memberService = inject(UsersService);
   private toastr = inject(ToastrService);
-
-  id = input.required<number>();
-  utente?: Utenti;
 
   ngOnInit(): void {
     this.loadMembers();
   }
 
   loadMembers() {
-    this.usersService.getMember(this.id()).subscribe({
-      next: (user) => (this.utente = user),
+    const user = this.accountService.currentUser();
+    if (!user) return;
+    this.memberService.getMember(user.id).subscribe({
+      next: (member) => (this.member = member),
     });
-
   }
 
   updateMember() {
-    this.usersService.updateUser(this.localEditForm?.value).subscribe({
-      next: (_) => {
+    this.memberService.updateUser(this.localEditForm?.value).subscribe({
+      next: _ => {
         this.toastr.success('profile update OKOK!!');
-        this.localEditForm?.reset(this.utente);
-      },
+        this.localEditForm?.reset(this.member);
+      }
     });
+
   }
+
 }

@@ -11,6 +11,7 @@ Task<List<Utenti>> GetUtentiAsync();
 
         // Task<Utenti?> GetUtenteAsync(int CommessaId);
         Task<Utenti?> GetUtenteAsync(string user);
+                Task<Utenti?> GetUtenteAsync(int Id);
         Task<bool> SaveAllAsync();
         Task<bool> InsertAsync(Utenti user);
         Task<bool> UpdateAsync(Utenti uUser);
