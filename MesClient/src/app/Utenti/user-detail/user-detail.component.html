@@ -1,4 +1,4 @@
-<p>user-detail works!</p>
+
 @if (utente){
 <div class="row">
     <div class="col-3">
@@ -15,6 +15,12 @@
             <h4 class="mt-2">Description</h4>
             <input type="text" [(ngModel)]="utente.description" class="form-control mx-2" name="description">
         </form>
+    </div>
+</div>
+}   @else {
+<div class="row">
+    <div class="col-12">
+        <h4>Utente non trovato</h4>
     </div>
 </div>
 }

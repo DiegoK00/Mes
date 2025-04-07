@@ -15,6 +15,7 @@ import { UserCardComponent } from '../user-card/user-card.component';
 })
 export class UserListComponent {
 
+
   public userService = inject(UsersService);
   utente: Utenti = {
     id: 0,
@@ -25,6 +26,8 @@ export class UserListComponent {
     cognome: '',
     description: '',
     photo: '',
+    email: '',
+    telefono:'',
   };
   pageNumber = 2;
   pageSize = 5;
@@ -41,11 +44,17 @@ export class UserListComponent {
   }
 
   loadUtente(id:number){
-    console.log('ooo');
    this.userService.getMember(id).subscribe(
       (utente: Utenti) => {
         this.utente = utente;
    });
   }
+  deleteUtente(id:number) { 
 
+    console.log('DEL ' + id);
+  //     this.userService.getMember(id).subscribe(
+  //     (utente: Utenti) => {
+  //       this.utente = utente;
+  //  });
+  }
 }

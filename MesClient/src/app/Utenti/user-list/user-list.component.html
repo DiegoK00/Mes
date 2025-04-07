@@ -8,7 +8,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Cognome</th>
-                    <th scope="col">Description</th>
+                    <!-- <th scope="col">Description</th> -->
                     <!-- <th scope="col">Telefono</th> -->
                 </tr>
             </thead>
@@ -16,37 +16,38 @@
                 @for (user of userService.userS(); track user.id) {
                 <tr>
                     <td>
-
-                        <!-- <button routerLink="/Utente/{{user.id}}" routerLinkActive="router-link-active"
-                            class="btn btn-primary {{user.id}}">
-                            <i class="fa fa-user"> </i> </button> -->
-                        <button  type="button" class="btn btn-success col-2" (ngSubmit)="loadUtente(user.id)">Modifica</button>
-
-                        <!-- // 'Utente/:id' "/members/{{member().userName}}" -->
-                        <!-- {{user.id}} -->
+                        <button type="button" class="btn btn-success col-6" (click)="loadUtente(user.id)">
+                            <a class="fa fa-edit link-light" > </a>
+                        </button>
+                        <button type="button" class="btn btn-sn btn-danger col-6"  (click)="deleteUtente(user.id)">
+                            <a class="fa fa-trash link-light"></a>
+                        </button>
+                        
                     </td>
                     <td>{{user.nome}}</td>
                     <td>{{user.cognome}}</td>
-                    <td>{{user.description}}</td>
+                    <!-- <td>{{user.description}}</td> -->
                     <!-- <td>{{user.telefono}}</td> -->
                 </tr>
                 }
             </tbody>
         </table>
 
-        <!-- @for (user of userService.userS(); track user.id) {
-    <div class="col-2">
-        <app-user-card [utente]="user"></app-user-card>
-    </div>
-    } -->
+
 
     </div>
     <div class="col-8">
 
-        <b>
-            To do...
+        <b>to do..
+            
         </b>
         <app-user-card [utente]="utente"></app-user-card>
 
     </div>
 </div>
+
+<!-- @for (user of userService.userS(); track user.id) {
+    <div class="col-2">
+        <app-user-card [utente]="user"></app-user-card>
+    </div>
+    } -->

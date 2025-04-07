@@ -1,0 +1,8 @@
+.dropdown-toggle, .dropdown-item,  .nav-item {
+  cursor: pointer;
+}
+.a , .hover, .link  {
+  cursor: hand;
+  
+}
+

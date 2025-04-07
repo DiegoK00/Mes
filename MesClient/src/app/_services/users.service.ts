@@ -49,4 +49,9 @@ export class UsersService {
   insertUser(user: Utenti) {
     return this.http.post(this.baseUrl + 'Utenti', user).pipe();
   }
+
+  deleteuser(id: number) {
+    return this.http.delete(this.baseUrl + 'Utenti/' + id);
+  }
+
 }

@@ -7,4 +7,6 @@ export interface Utenti{
     cognome: string;
     description: string;
     photo: string;
+    telefono: string;
+    email: string;
 }

@@ -31,7 +31,9 @@ export class NavComponent {
     nome: 'nn',
     cognome: 'cc',
     description: 'dd',
-    photo: ''
+    photo: '',
+    email: '',
+    telefono:'',
   };
 
   login() {
