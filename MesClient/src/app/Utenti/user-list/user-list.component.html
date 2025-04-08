@@ -38,10 +38,9 @@
     </div>
     <div class="col-8">
 
-        <b>to do..
-            
-        </b>
-        <app-user-card [utente]="utente"></app-user-card>
+        @if (this.utente != null) {
+            <app-user-card [utente]="utente"></app-user-card>
+        }
 
     </div>
 </div>

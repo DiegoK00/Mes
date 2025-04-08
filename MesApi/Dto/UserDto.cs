@@ -17,6 +17,11 @@ namespace MesApi.Dto
         public string Cognome { get; set; } = "";
         public string Description { get; set; } = "";
         public string photo { get; set; } = "";
+        public string Indirizzo { get; set; }  = "";
+        public string Località { get; set; } = "";
+        public string Provincia { get; set; } = "";
+        public string Regione { get; set; } = "";
+        public string Nazione { get; set; } = "";
 
     }
 }

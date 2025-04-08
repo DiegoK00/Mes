@@ -17,18 +17,24 @@ export class UserListComponent {
 
 
   public userService = inject(UsersService);
-  utente: Utenti = {
-    id: 0,
-    username: '',
-    password: '',
-    token: '',
-    nome: '',
-    cognome: '',
-    description: '',
-    photo: '',
-    email: '',
-    telefono:'',
-  };
+  utente?: Utenti ;
+  // = {
+  //   id: 0,
+  //   username: '',
+  //   password: '',
+  //   token: '',
+  //   nome: '',
+  //   cognome: '',
+  //   description: '',
+  //   photo: '',
+  //   email: '',
+  //   telefono:'',
+  //   indirizzo: '',
+  //   localita: '',
+  //   provincia: '',
+  //   regione: '',
+  //   nazione: '',
+  // };
   pageNumber = 2;
   pageSize = 5;
 

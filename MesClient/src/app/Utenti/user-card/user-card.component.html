@@ -1,36 +1,64 @@
 <div class="card mb-4">
     <div class="card-img-wrapper">
         @if (editForm.dirty) {
-            <div class="alert alert-info pb-0">
-                <p><strong>Information: </strong>
-                    Hai cambiato qualcosa. Le cose non salvate andranno perse!</p>
-    
-            </div>
+        <div class="alert alert-info pb-0">
+            <p><strong>Information: </strong>
+                Hai cambiato qualcosa. Le cose non salvate andranno perse!</p>
+
+        </div>
         }
-        <form  id="editForm" #editForm="ngForm" (ngSubmit)="updateUtente()" class="d-flex" autocomplete="off">
-            <div class="row col-2">
-                <input name="username" [(ngModel)]="utente().username" class="form-control me-2" type="search"
-                placeholder="username">
-            </div>
-            <div class="row col-2">
-            <input name="nome" [(ngModel)]="utente().nome" class="form-control me-2" placeholder="nome" type="search">
-            <input name="cognome" [(ngModel)]="utente().cognome" class="form-control me-2" placeholder="cognome"
-                type="search">
-            </div>
-                <div class="row col-2">
-            <input name="description" [(ngModel)]="utente().description" class="form-control me-2"
-                placeholder="description" type="search">
-            </div>
-            <div class="row col-2">
-            
-            <input name="telefono" [(ngModel)]="utente().telefono" class="form-control me-2" placeholder="telefono"
-                type="search">
-            </div>
-            <div class="row col-2">
-            <input name="email" [(ngModel)]="utente().email" class="form-control me-2" placeholder="email"
-                type="search">
-            </div>
-           
+        <form id="editForm" #editForm="ngForm" (ngSubmit)="updateUtente()" class="d-flex" autocomplete="off">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td scope="row">
+                            <input name="username" [(ngModel)]="utente().username" class="form-control me-2"
+                                type="search" placeholder="username">
+                        </td>
+                        <td>
+                            <input name="nome" [(ngModel)]="utente().nome" class="form-control me-2" placeholder="nome"
+                                type="search">
+                            <input name="cognome" [(ngModel)]="utente().cognome" class="form-control me-2"
+                                placeholder="cognome" type="search">
+                        </td>
+                        <td>
+                            <input name="description" [(ngModel)]="utente().description" class="form-control me-2"
+                                placeholder="description" type="search">
+                        </td>
+                        <td>
+                            <input name="telefono" [(ngModel)]="utente().telefono" class="form-control me-2"
+                                placeholder="telefono" type="search">
+                        </td>
+                        <td>
+                            <input name="email" [(ngModel)]="utente().email" class="form-control me-2"
+                                placeholder="email" type="search">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <input name="indirizzo" [(ngModel)]="utente().indirizzo" class="form-control me-2"
+                                placeholder="indirizzo" type="search">
+                        </td>
+                        <td>
+                            <input name="localita" [(ngModel)]="utente().localita" class="form-control me-2"
+                                placeholder="localita" type="search">
+                        </td>
+                        <td>
+                            <input name="provincia" [(ngModel)]="utente().provincia" class="form-control me-2"
+                                placeholder="provincia" type="search">
+                        </td>
+                        <td>
+                            <input name="regione" [(ngModel)]="utente().regione" class="form-control me-2"
+                                placeholder="regione" type="search">
+                        </td>
+                        <td>
+                            <input name="nazione" [(ngModel)]="utente().nazione" class="form-control me-2"
+                                placeholder="nazione" type="search">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </form>
 
     </div>
@@ -38,9 +66,8 @@
     <div class="card-body p-1">
         <ul class="list-inline member-icons animate text-center">
             <li class="list-inline-item">
-                         
-                <button [disabled]="!editForm.dirty" 
-                class="btn btn-success" >
+                <button [disabled]="!editForm.dirty" class="btn btn-success" 
+                        form="editForm" type="submit">
                     <i class="fa fa-check-square"> </i>
                 </button>
             </li>

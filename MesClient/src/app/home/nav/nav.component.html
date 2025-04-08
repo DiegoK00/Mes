@@ -20,7 +20,7 @@
             </ul>
 
 
-            @if (! this.accountService.currentUser() ){
+            @if (! this.accountService.currentUser() && this.modello != null) {
             <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex" autocomplete="off">
                 <input name="username" [(ngModel)]="modello.username" class="form-control me-2" type="search"
                     placeholder="username">

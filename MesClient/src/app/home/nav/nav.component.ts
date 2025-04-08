@@ -10,10 +10,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [FormsModule,     BsDropdownModule,     RouterLink,
-    RouterLinkActive],
+  imports: [FormsModule, BsDropdownModule, RouterLink, RouterLinkActive],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css'
+  styleUrl: './nav.component.css',
 })
 export class NavComponent {
   accountService = inject(AccountService);
@@ -23,39 +22,43 @@ export class NavComponent {
   // currentUser = signal<Utenti | null>(null);
   // currentUser = input.required<Utenti>;
 
-  modello: Utenti = {
-    id: 0,
-    username: '',
-    password: '',
-    token: 'tt',
-    nome: 'nn',
-    cognome: 'cc',
-    description: 'dd',
-    photo: '',
-    email: '',
-    telefono:'',
-  };
+  modello?: Utenti 
+  // = {
+  //   id: 0,
+  //   username: '',
+  //   password: '',
+  //   token: 'tt',
+  //   nome: 'nn',
+  //   cognome: 'cc',
+  //   description: 'dd',
+  //   photo: '',
+  //   email: '',
+  //   telefono: '',
+  //   indirizzo: '',
+  //   localita: '',
+  //   provincia: '',
+  //   regione: '',
+  //   nazione: '',
+  // };
 
   login() {
-    
     // console.trace(this.model);
-
-    this.accountService.login(this.modello).subscribe({
-      next: () => {
-        this.router.navigateByUrl('/Utenti');
-        // this.currentUser = utente;
-      },
-      // era doppiamente intercettato!!!
-      // error: (error) => this.toaster.error(error.error),
-      
-    });
+    if (this.modello != null) {
+      this.accountService.login(this.modello).subscribe({
+        next: () => {
+          this.router.navigateByUrl('/Utenti');
+          // this.currentUser = utente;
+        },
+        // era doppiamente intercettato!!!
+        // error: (error) => this.toaster.error(error.error),
+      });
+    }
   }
+
   logout() {
     this.accountService.logout();
     this.router.navigateByUrl('/');
   }
-
-  
 }
 
 // @NgModule({
