@@ -27,6 +27,7 @@ private toaster = inject(ToastrService);
   }
 
   clearUtente(id: number) {
+    console.log('clear');
     this.userService.getMember(id).subscribe(
       (utente: Utenti) => {
         this.utente().description = utente.description;
@@ -35,6 +36,12 @@ private toaster = inject(ToastrService);
         this.utente().username = utente.username; 
         this.utente().telefono = utente.telefono; 
         this.utente().email = utente.email; 
+        this.utente().indirizzo = utente.indirizzo; 
+        this.utente().localita = utente.localita; 
+        this.utente().regione = utente.regione; 
+        this.utente().provincia = utente.provincia; 
+        this.utente().nazione = utente.nazione; 
+        this.editForm.dirty = false;
    }
   );
   }
