@@ -49,6 +49,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   updateMember() {
+    console.log(this.utente?.cognome);
     this.usersService.updateUser(this.localEditForm?.value).subscribe({
       next: (_) => {
         this.toastr.success('profile update OKOK!!');

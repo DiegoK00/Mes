@@ -5,6 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "C#: MesApi Debug",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/MesApi/MesApi.csproj"
+        },
+        {
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
@@ -18,5 +24,6 @@
             "url": "https://localhost:4200",
             "webRoot": "${workspaceFolder}/MesAngular/",
         }
+        
     ]
 }
