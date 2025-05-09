@@ -1,0 +1,27 @@
+# Use the official .NET SDK image as a build stage
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
+COPY *.csproj ./
+RUN dotnet restore
+# Copy the rest of the application files
+COPY . ./
+RUN dotnet publish -c Release -o /out
+
+# Use the official .NET runtime image for the runtime stage
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /out .
+COPY --from=build /app/aspnetapp.pfx .
+RUN ls 
+EXPOSE 5206
+EXPOSE 50216
+
+ENV ASPNETCORE_HTTPS_PORT=5206 
+ENV ASPNETCORE_HTTP_PORT=50216
+ENV ASPNETCORE_URLS="https://+;http://+"
+# ENV ASPNETCORE_URLS="https://+"
+# ENV ASPNETCORE_Kestrel__Certificates__Default__Password="PwdPassword"
+ENV ASPNETCORE_Kestrel__Certificates__Default__Path=aspnetapp.pfx
+
+# Set the entry point for the application
+ENTRYPOINT ["dotnet", "MesApi.dll"]
