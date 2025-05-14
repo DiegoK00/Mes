@@ -15,16 +15,17 @@ WORKDIR /app
 COPY --from=build /out .
 COPY --from=build /app/aspnetapp.pfx .
 COPY --from=build /app/MES.db .
-EXPOSE 5206
+EXPOSE 8080
 # EXPOSE 50216
-
 
 # ENV ASPNETCORE_HTTP_PORT=5206 
 # ENV ASPNETCORE_HTTP_PORT=50216
-ENV ASPNETCORE_URLS="https://+"
-# ENV ASPNETCORE_URLS="https://+"
+# ENV ASPNETCORE_HTTP_PORTS=5206
+# ENV ASPNETCORE_URLS="https://+;http://+"
 # ENV ASPNETCORE_Kestrel__Certificates__Default__Password="PwdPassword"
 ENV ASPNETCORE_Kestrel__Certificates__Default__Path=/app/aspnetapp.pfx
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/app
+ENV ASPNETCORE_HTTP_PORTS=8080
 
 # Se l'app è stata compilata usando il metodo WebHost.CreateDefaultBuilder() precedente, 
 # impostare ASPNETCORE_URLS (non ASPNETCORE_HTTP_PORTS). 
@@ -35,4 +36,4 @@ ENV ASPNETCORE_Kestrel__Certificates__Default__Path=/app/aspnetapp.pfx
 RUN ls 
 
 # Set the entry point for the application
-ENTRYPOINT ["dotnet", "MesApi.dll"]
+ENTRYPOINT ["dotnet", "/MesApi.dll"]
