@@ -36,4 +36,4 @@ ENV ASPNETCORE_HTTP_PORTS=8080
 RUN ls 
 
 # Set the entry point for the application
-ENTRYPOINT ["dotnet", "/MesApi.dll"]
+ENTRYPOINT ["dotnet", "MesApi.dll"]
